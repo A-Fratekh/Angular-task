@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,4 +12,10 @@ export class ReviewService {
   getReviews(): Observable<any>{
     return this.httpClient.get('/assets/data/reviewData.json');
   }
+
+   getReviewById(id: string): Observable<any> {
+      return this.getReviews().pipe(
+        map((appraisals:any) => appraisals.find((appraisal:any) => appraisal.id === id))
+      );
+    }
 }

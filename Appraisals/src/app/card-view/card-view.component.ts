@@ -11,9 +11,13 @@ export class CardViewComponent {
   @Input() mode: 'appraisal' | 'review' = 'appraisal';
   @Input() userData: any;
   @Output() startAppraisalClicked = new EventEmitter<string>();
+  @Output() reviewAppraisalClicked = new EventEmitter<string>();
     
    startAppraisalEmit(param: string) {
     this.startAppraisalClicked.emit(param);
+  }
+  reviewAppraisalEmit(param : string){
+    this.reviewAppraisalClicked.emit(param);
   }
 }
  

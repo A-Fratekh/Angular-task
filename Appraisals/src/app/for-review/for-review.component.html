@@ -3,7 +3,7 @@
     <app-filter [context]="'review'"></app-filter>
     <div class="row mt-3">
         <div class="col-md-4" *ngFor="let user of reviewList | async">
-            <app-card-view [mode]="'review'" [userData]="user"></app-card-view>
+            <app-card-view [mode]="'review'" [userData]="user" (reviewAppraisalClicked)="reviewAppraisalhandler($event)"></app-card-view>
         </div>
     </div>
 </div>

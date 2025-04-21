@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppraisalService } from '../appraisal.service';
-import { response } from 'express';
 
 @Component({
   selector: 'app-appraisal-details',

@@ -14,12 +14,11 @@
       
         <div class="posting-list">
           <div class="posting-item">
-            <mat-checkbox 
-              [checked]="selectedPostings.includes(postingData.id)"
-              (change)="toggleSelection(postingData.id)"
-              class="selection-checkbox">
-            </mat-checkbox>
-      
+            <mat-checkbox
+            [checked]="isSelected"
+            (change)="toggleSelection()"
+            class="selection-checkbox">
+          </mat-checkbox>
             <div class="employee-info">
               <div class="employee-details">
                 <div class="employee-id">{{ postingData.id }} | {{ postingData.name }}</div>

@@ -49,7 +49,7 @@
           <button *ngIf="mode === 'appraisal'" class="btn btn-outline-warning btn-sm px-3" (click)="startAppraisalEmit(userData.id)">
             {{ userData.actionText || 'Start appraisal' }}
           </button>
-          <button *ngIf="mode === 'review'" class="btn btn-outline-warning btn-sm px-3">
+          <button *ngIf="mode === 'review'" class="btn btn-outline-warning btn-sm px-3" (click)="reviewAppraisalEmit(userData.id)">
             Review
           </button>
         </div>

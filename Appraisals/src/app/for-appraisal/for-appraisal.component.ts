@@ -22,6 +22,6 @@ export class ForAppraisalComponent {
   }
 
   startAppraisalHandler(param:string){
-    this.router.navigate(['/appraisalDetails', param]);
+    this.router.navigate(['/appraisal', param]);
   }
 }
