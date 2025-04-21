@@ -1,0 +1,10 @@
+
+<div class="container-fluid mt-4">
+    
+      <app-filter [context]="'posting'"></app-filter>
+    <div class="row mt-4">
+        <div class="col-10" *ngFor="let post of postingList | async">
+            <app-grid-view [postingData]="post"></app-grid-view>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<!-- navbar.component.html -->
+<div class="col-12 col-xl-5">
+    <div class="d-flex justify-content-start">
+        <div class="nav-container ">
+            <ul class="nav nav-tabs rounded bg-light w-100" id="myTab" role="tablist">
+                <li class="nav-item" *ngFor="let tab of tabs" [routerLinkActive]="'active'">
+                  <a class="nav-link" [routerLink]="tab.route" role="tab">
+                    <i class="{{tab.icon}} me-1"></i> {{tab.label}} ({{tab.count}})
+                  </a>
+                </li>
+              </ul>
+        </div>
+    </div>
+  </div>

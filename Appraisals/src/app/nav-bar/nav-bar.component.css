@@ -1,0 +1,40 @@
+/* Base styles for tabs */
+.nav-tabs {
+    border: none !important;
+    margin: 1px 2px;
+    box-shadow: none !important;
+    background-color: var(--nav-bar-bg); /* Light gray background for tab container */
+}
+
+.nav, .nav-container {
+    padding: 2px 4px;
+    border: none !important;
+}
+.nav-tabs .nav-link {
+    background-color: transparent;
+    border-radius: 10px;
+    border: none !important;
+    margin: 2px;
+    padding: 6px 12px;
+    color: var(--nav-icons, #333);
+    text-decoration: none;
+}
+
+/* Active tab styles */
+.nav-tabs .active, 
+.nav-tabs .nav-item.show .nav-link {
+    background-color: white !important; 
+    color: black;
+    border: none !important;
+    border-color: transparent !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+    border-radius: 10px;
+}
+
+/* Hover styles */
+.nav-link:hover {
+    border: none !important;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.5); 
+    text-decoration: none;
+}

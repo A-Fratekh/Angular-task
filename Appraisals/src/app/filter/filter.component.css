@@ -1,0 +1,67 @@
+/* filter.component.scss */
+.filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+  }
+  
+  .filter-options {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .posting-filter {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .label {
+    font-weight: 500;
+    color: #333;
+    margin-right: 4px;
+  }
+  
+  .radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    gap: 4px;
+  }
+  
+  .radio-label {
+    margin-left: 4px;
+    color: #333;
+  }
+  
+  .radio-icon {
+    font-size: 14px;
+  }
+  
+  .filter-dropdowns {
+    display: flex;
+    gap: 24px;
+  }
+  
+  .dropdown-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .dropdown-label {
+    margin-right: 8px;
+    color: #333;
+  }
+  
+  .dropdown {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    min-width: 200px;
+    outline: none;
+  }
