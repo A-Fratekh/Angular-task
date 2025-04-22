@@ -29,6 +29,7 @@ export class ForPostingComponent {
     const index = this.selectedPostings.indexOf(id);
     if (index === -1) {
       this.selectedPostings.push(id);
+      console.log(this.selectedPostings)
     } else {
       this.selectedPostings.splice(index, 1);
     }
@@ -49,4 +50,5 @@ export class ForPostingComponent {
   isIndeterminate(): boolean {
     return this.selectedPostings.length > 0 && !this.areAllSelected();
   }
+
 }

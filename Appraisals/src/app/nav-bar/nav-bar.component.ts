@@ -15,19 +15,19 @@ export class NavBarComponent implements OnInit {
       label: 'For appraisal', 
       route: '/appraisal', 
       icon: 'fas fa-list-ul', 
-      count: 4 
+      count: 5 
     },
     { 
       label: 'For posting', 
       route: '/posting', 
       icon: 'far fa-file-alt', 
-      count: 9 
+      count: 4
     },
     { 
       label: 'For review', 
       route: '/review', 
       icon: 'far fa-eye', 
-      count: 9 
+      count: 5 
     }
   ];
 

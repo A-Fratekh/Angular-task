@@ -6,6 +6,7 @@
       "position": "Accounting officer",
       "postingType": "Mid year performance review",
       "postingLevel": "Managerial | Self",
+      "image": "./assets/images/profile-posting.jpg",
       "rating": 30,
       "maxRating": 100,
       "requestDate": "10/10/2023"
@@ -14,9 +15,10 @@
       "id": "000095",
       "name": "Mohammad Khaled",
       "department": "Food and beverage department",
-      "position": "Accounting officer",
+      "position": "Support",
       "postingType": "Mid year performance review",
       "postingLevel": "Managerial | Self",
+      "image": "./assets/images/profile-posting.jpg",
       "rating": 70,
       "maxRating": 100,
       "requestDate": "10/10/2023"
@@ -25,9 +27,10 @@
       "id": "000035",
       "name": "Ahmad Saeed",
       "department": "Food and beverage department",
-      "position": "Accounting officer",
+      "position": "Developer",
       "postingType": "Mid year performance review",
       "postingLevel": "Managerial | Self",
+      "image": "./assets/images/profile-posting.jpg",
       "rating": 50,
       "maxRating": 100,
       "requestDate": "10/10/2023"
@@ -36,9 +39,10 @@
       "id": "000045",
       "name": "Mohammad Awad",
       "department": "Food and beverage department",
-      "position": "Accounting officer",
+      "position": "Sales",
       "postingType": "Mid year performance review",
       "postingLevel": "Managerial | Self",
+      "image": "./assets/images/profile-posting.jpg",
       "rating": 60,
       "maxRating": 100,
       "requestDate": "10/10/2023"

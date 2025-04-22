@@ -30,7 +30,8 @@
   }
   
   .selection-checkbox {
-    margin-right: 12px;
+    margin-right: 0;
+    width: 20%;
   }
   
   .employee-info {
@@ -46,7 +47,7 @@
   }
   
   .employee-details .employee-id {
-    font-weight: bold;
+    font-weight: 400;
     margin-bottom: 2px;
   }
   
@@ -55,7 +56,14 @@
     font-size: 12px;
     color: #666;
   }
-  
+  .employee-photo{
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 50%;
+  }
   .posting-info {
     display: flex;
     flex-direction: column;
@@ -63,7 +71,7 @@
   }
   
   .posting-info .posting-title {
-    font-weight: bold;
+    font-weight: 400;
     margin-bottom: 2px;
   }
   

@@ -1,55 +1,45 @@
-<!-- performance-postings.component.html -->
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
-</head>
 
+<div class="postings-container ">
+  <div class="posting-list">
+    <div class="posting-item">
+      <mat-checkbox [checked]="isSelected" (change)="toggleSelection()" class="selection-checkbox">
+      </mat-checkbox>
+      <div class="d-flex w-25">
+        <img class="employee-photo d-flex rounded-circle" [src]="postingData.image" alt="">
+      </div>
+      <div class="employee-info d-flex flex-row w-100">
+        <div class="employee-details d-flex flex-column w-100">
+          <div class="employee-id">{{ postingData.id }} | {{ postingData.name }}</div>
+          <div class="employee-dept">{{ postingData.department }}</div>
+          <div class="employee-position">{{ postingData.position }}</div>
+        </div>
+      </div>
 
-    <div class="postings-container ">
-      
-        <div class="posting-list">
-          <div class="posting-item">
-            <mat-checkbox
-            [checked]="isSelected"
-            (change)="toggleSelection()"
-            class="selection-checkbox">
-          </mat-checkbox>
-            <div class="employee-info">
-              <div class="employee-details">
-                <div class="employee-id">{{ postingData.id }} | {{ postingData.name }}</div>
-                <div class="employee-dept">{{ postingData.department }}</div>
-                <div class="employee-position">{{ postingData.position }}</div>
-              </div>
-            </div>
-      
-            <div class="posting-info">
-              <div class="posting-title">{{ postingData.postingType }}</div>
-              <div class="posting-level">{{ postingData.postingLevel }}</div>
-              <div class="request-date">Requested on: {{ postingData.requestDate }}</div>
-            </div>
-      
-            <div class="rating-section">
-              <div class="rating-text" *ngIf="postingData.rating >= 40">
-                {{ getRatingText(postingData.rating) }}
-                <span *ngIf="postingData.rating >= 70">: {{ postingData.rating }}/{{ postingData.maxRating }}</span>
-              </div>
-              <div class="rating-text" *ngIf="postingData.rating < 40">
-                {{ postingData.rating }}/{{ postingData.maxRating }}
-              </div>
-              <div class="rating-bar">
-                <div class="rating-progress" [ngClass]="{
+      <div class="posting-info d-flex flex-column w-100">
+        <div class="posting-title">{{ postingData.postingType }}</div>
+        <div class="posting-level">{{ postingData.postingLevel }}</div>
+        <div class="request-date">Requested on: {{ postingData.requestDate }}</div>
+      </div>
+
+      <div class="rating-section d-flex flex-column w-50">
+        <div class="rating-text" *ngIf="postingData.rating >= 40">
+          {{ getRatingText(postingData.rating) }}
+          <span *ngIf="postingData.rating >= 70">: {{ postingData.rating }}/{{ postingData.maxRating }}</span>
+        </div>
+        <div class="rating-text" *ngIf="postingData.rating < 40">
+          {{ postingData.rating }}/{{ postingData.maxRating }}
+        </div>
+        <div class="rating-bar">
+          <div class="rating-progress" [ngClass]="{
                   'high': postingData.rating >= 70,
                   'medium': postingData.rating >= 40 && postingData.rating < 70,
                   'low': postingData.rating < 40
                 }" [style.width.%]="postingData.rating"></div>
-              </div>
-            </div>
-      
-          </div>
         </div>
       </div>
+      <div class="d-flex mx-3 bg-light ">
+        <i class="fa fa-chevron-right "></i>
+      </div>
+    </div>
+  </div>
+</div>

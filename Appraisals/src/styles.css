@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root{
     --side-bar-bg : rgba(248, 247, 247, 1);
     --main-bg : rgba(217, 217, 217, 0.7);
@@ -10,8 +12,13 @@
     --border-highlighted : #007bff;
     --nav-icons :rgba(51, 51, 51, 1);
     --submit :  rgba(241, 130, 6, 1);
+    font-family: inter;
 
 }
 body{
     padding: 50px 50px;
 }
+* {
+    font-family: 'Inter', sans-serif;
+  }
+  

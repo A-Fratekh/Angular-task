@@ -6,3 +6,21 @@
     width: 40px;
     height: 40px;
 }
+.button-outline-warning{
+    color: rgba(241, 130, 6, 1);
+    outline-color: rgba(241, 130, 6, 1);
+}
+
+.btn-light{
+    background-color: white;
+}
+.more-btn{
+    border: none;
+}
+
+.more-btn:hover, .more-btn:active{
+    background-color: white;
+}
+.fs-7{
+    font-size: 13px;
+}

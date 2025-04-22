@@ -15,7 +15,7 @@ export class FilterComponent implements OnInit {
   @Input() context: ComponentContext = 'appraisals';
   @Output() filterChanged = new EventEmitter<any>();
   
-  selectedOption: string = 'history'; // Default selection
+  selectedOption: string = 'inProcess'; // Default selection
   
   // Appraisal/Review context data
   appraisalTypes = {
@@ -25,8 +25,7 @@ export class FilterComponent implements OnInit {
   
   periods: string[] = ['Current Quarter', 'Last Quarter', 'Current Year', 'Last Year'];
   
-  // Posting context data
-  adminUnits: string[] = ['HR Department', 'Finance', 'Marketing', 'Engineering', 'Operations'];
+  adminUnits: string[] = ['Accountant Officer', 'Developer', 'Support', 'Sales'];
   
   selectedAppraisalType: string = '';
   selectedPeriod: string = '';
