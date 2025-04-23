@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output} from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
@@ -9,28 +9,29 @@ import { RouterLink, RouterModule } from '@angular/router';
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent implements OnInit {
-
+  @Output() tabSelected  = new EventEmitter<string>();
   tabs = [
     { 
       label: 'For appraisal', 
-      route: '/appraisal', 
+      route: 'appraisal', 
       icon: 'fas fa-list-ul', 
-      count: 5 
+
     },
     { 
       label: 'For posting', 
-      route: '/posting', 
+      route: 'posting', 
       icon: 'far fa-file-alt', 
-      count: 4
     },
     { 
       label: 'For review', 
-      route: '/review', 
-      icon: 'far fa-eye', 
-      count: 5 
+      route: 'review', 
+      icon: 'far fa-eye',  
     }
   ];
 
+  tabSelectedEmitter(param :string){
+    this.tabSelected.emit(param);
+  }
   constructor() { }
 
   ngOnInit(): void { }

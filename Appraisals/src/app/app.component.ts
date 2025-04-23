@@ -1,26 +1,28 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet , Router, NavigationEnd} from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { AppraisalService } from './appraisal.service';
 import { CommonModule } from '@angular/common';
+import { SearchService } from './search.service';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { FilterComponent } from './filter/filter.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavBarComponent, CommonModule],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 
 
 export class AppComponent {
-  appraisalList: any[] = [];
 
-  constructor(private appraisalService: AppraisalService) {}
+  context : any = '';
 
+  constructor(private searchService: SearchService, private router: Router) { 
+   
+  }
+  
   ngOnInit(): void {
-    this.appraisalService.getAppraisals().subscribe(data => {
-      this.appraisalList = data;
-    });
-}
+  }
 }

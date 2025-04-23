@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppraisalService } from '../appraisal.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-appraisal-details',
@@ -11,14 +11,14 @@ import { AppraisalService } from '../appraisal.service';
 export class AppraisalDetailsComponent  implements OnInit{
   appraisal :any;
 
-  constructor(private activeRouter: ActivatedRoute, private appraisalService: AppraisalService){
+  constructor(private activeRouter: ActivatedRoute, private dataService: DataService){
   }
 
 
   ngOnInit(): void {
   const appraisalId  = this.activeRouter.snapshot.paramMap.get('id');
   if(appraisalId){
-    this.appraisalService.getAppraisalById(appraisalId).subscribe((data:any)=>{
+    this.dataService.getAppraisalById(appraisalId).subscribe((data:any)=>{
       this.appraisal=data;
     });
   }

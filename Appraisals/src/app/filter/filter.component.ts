@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FilterService } from '../filter.service';
 
 export type ComponentContext = 'appraisals' | 'review' | 'posting';
 
@@ -15,15 +16,17 @@ export class FilterComponent implements OnInit {
   @Input() context: ComponentContext = 'appraisals';
   @Output() filterChanged = new EventEmitter<any>();
   
-  selectedOption: string = 'inProcess'; // Default selection
-  
-  // Appraisal/Review context data
+  constructor(private filterService : FilterService){
+  }
+
+  selectedOption: string ='inProcess'; 
+
   appraisalTypes = {
-    inProcess: ['Pending Review', 'Awaiting Approval', 'Draft'],
-    history: ['Annual Review', 'Performance Review', 'Self Assessment', 'Peer Review']
+    inProcess: [],
+    history: []
   };
   
-  periods: string[] = ['Current Quarter', 'Last Quarter', 'Current Year', 'Last Year'];
+  periods: string[] = [];
   
   adminUnits: string[] = ['Accountant Officer', 'Developer', 'Support', 'Sales'];
   
@@ -32,7 +35,7 @@ export class FilterComponent implements OnInit {
   selectedAdminUnit: string = '';
 
   ngOnInit(): void {
-    // Set default values
+
     if (this.isAppraisalOrReviewContext()) {
       this.selectedAppraisalType = '';
     } else {
@@ -40,9 +43,10 @@ export class FilterComponent implements OnInit {
     }
   }
 
-  selectOption(option: string): void {
-    this.selectedOption = option;
-    // Reset the selected appraisal type when switching between in process and history
+  selectOption(option:string): void {
+     this.filterService.setContext(option);
+     this.selectedOption = this.filterService.getContext();
+    
     if (this.isAppraisalOrReviewContext()) {
       this.selectedAppraisalType = '';
     }

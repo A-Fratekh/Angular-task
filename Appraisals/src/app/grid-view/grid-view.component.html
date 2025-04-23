@@ -24,7 +24,7 @@
       <div class="rating-section d-flex flex-column w-50">
         <div class="rating-text" *ngIf="postingData.rating >= 40">
           {{ getRatingText(postingData.rating) }}
-          <span *ngIf="postingData.rating >= 70">: {{ postingData.rating }}/{{ postingData.maxRating }}</span>
+          <span>: {{ postingData.rating }}/{{ postingData.maxRating }}</span>
         </div>
         <div class="rating-text" *ngIf="postingData.rating < 40">
           {{ postingData.rating }}/{{ postingData.maxRating }}

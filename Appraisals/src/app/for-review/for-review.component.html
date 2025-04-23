@@ -1,8 +1,8 @@
 
 <div class="container-fluid mt-4">
-    <app-filter [context]="'review'"></app-filter>
+    <app-filter  [context]="'review'"></app-filter>
     <div class="row mt-3">
-        <div class="col-md-4" *ngFor="let user of reviewList | async">
+        <div class="col-md-4" *ngFor="let user of filteredList">
             <app-card-view [mode]="'review'" [userData]="user" (reviewAppraisalClicked)="reviewAppraisalhandler($event)"></app-card-view>
         </div>
     </div>

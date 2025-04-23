@@ -1,11 +1,11 @@
 <!-- navbar.component.html -->
-<div class="col-12 col-xl-5">
-    <div class="d-flex justify-content-start">
+<div class="col-12 col-xl-5 mb-3">
+    <div class="d-flex justify-content-center justify-content-md-start">
         <div class="nav-container ">
-            <ul class="nav nav-tabs rounded bg-nav-bar w-100" id="myTab" role="tablist">
+            <ul class="nav nav-tabs bg-nav-bar w-100" id="myTab" role="tablist">
                 <li class="nav-item" *ngFor="let tab of tabs" [routerLinkActive]="'active'">
                   <a class="nav-link" [routerLink]="tab.route" role="tab">
-                    <i class="{{tab.icon}} me-1"></i> {{tab.label}} ({{tab.count}})
+                    <i class="{{tab.icon}} me-1"></i> {{tab.label}}
                   </a>
                 </li>
               </ul>

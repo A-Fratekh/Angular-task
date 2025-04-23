@@ -1,22 +1,19 @@
 
 <div class="container-fluid mt-4">
     <app-filter [context]="'posting'"></app-filter>
-  
-    <!-- Select All Checkbox -->
-    <div class="form-check mx-4 mt-3">
-      <input
-        type="checkbox"
-        class="form-check-input"
-        [checked]="areAllSelected()"
-        [indeterminate]="isIndeterminate()"
-        (change)="toggleSelectAll()"
-        id="selectAllCheck"
-      />
-      <label for="selectAllCheck" class="form-check-label">Select All</label>
-    </div>
-  
     <div class="row mt-3">
-      <div class="col-10" *ngFor="let post of postingList" >
+      <div class="form-check mx-4 mt-3">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          [checked]="areAllSelected()"
+          [indeterminate]="isIndeterminate()"
+          (change)="toggleSelectAll()"
+          id="selectAllCheck"
+        />
+        <label for="selectAllCheck" class="form-check-label">Select All</label>
+      </div>
+      <div class="col-10" *ngFor="let post of filteredList" >
         <app-grid-view
           [postingData]="post"
           [isSelected]="selectedPostings.includes(post.id)"

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { GridViewComponent } from "../grid-view/grid-view.component";
-import { PostingService } from '../posting.service';
 import { FormsModule } from '@angular/forms';
+import { SearchService } from '../search.service';
 import { FilterComponent } from '../filter/filter.component';
 
 @Component({
@@ -16,12 +16,13 @@ import { FilterComponent } from '../filter/filter.component';
 export class ForPostingComponent {
   postingList: any[] = [];
   selectedPostings: any[] = [];
+  filteredList :any[] = [];
 
-  constructor(private postingService: PostingService) {}
+  constructor( private searchService : SearchService) {}
 
   ngOnInit() {
-    this.postingService.getPostings().subscribe(data => {
-      this.postingList = data;
+    this.searchService.search.subscribe(searchString => {
+      this.serachChangeHandler(searchString);
     });
   }
 
@@ -51,4 +52,13 @@ export class ForPostingComponent {
     return this.selectedPostings.length > 0 && !this.areAllSelected();
   }
 
+  serachChangeHandler(searchString : string){
+    const lowerSearch = searchString.toLowerCase().trim();
+
+    this.filteredList = this.postingList.filter((item :string) =>
+      Object.values(item).some(val =>
+        String(val).toLowerCase().includes(lowerSearch)
+      )
+    );
+  }
 }
