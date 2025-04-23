@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet , Router, NavigationEnd} from '@angular/router';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CommonModule } from '@angular/common';
 import { SearchService } from './search.service';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { FilterComponent } from './filter/filter.component';
 
 
 @Component({
@@ -14,12 +11,8 @@ import { FilterComponent } from './filter/filter.component';
   styleUrl: './app.component.css'
 })
 
-
 export class AppComponent {
-
-  context : any = '';
-
-  constructor(private searchService: SearchService, private router: Router) { 
+  constructor() { 
    
   }
   

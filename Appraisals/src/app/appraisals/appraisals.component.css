@@ -1,0 +1,70 @@
+/* appraisals.component.css */
+.appraisals-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .tabs button {
+    padding: 10px 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-bottom: 2px solid transparent;
+    display: flex;
+    align-items: center;
+  }
+  
+  .tabs button.active {
+    border-bottom: 2px solid #0078d4;
+    color: #0078d4;
+  }
+  
+  .tab-icon {
+    margin-right: 5px;
+  }
+  
+  .filter-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  
+  .view-toggle button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .view-toggle button.active {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+  
+  .appraisal-type select {
+    padding: 5px;
+    margin-left: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+  }
+  
+.filter{
+    background-color: #F8F7F7;
+}

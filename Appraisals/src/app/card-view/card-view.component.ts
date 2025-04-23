@@ -1,43 +1,91 @@
-import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { FilterService } from '../filter.service';
-import { Subscription } from 'rxjs/internal/Subscription';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-card-view',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './card-view.component.html',
-  styleUrl: './card-view.component.css'
+  styleUrls: ['./card-view.component.css']
 })
 export class CardViewComponent implements OnInit {
-  selectedMode : string ='';
-  private subscription!: Subscription;
+  @Input() items: any[] = [];
+  @Input() view: 'process' | 'history' = 'process';
+  @Input() selectedTab: string = '';
+  @Input() headerTemplate: any;
+  @Input() bodyTemplate: any;
+  @Input() footerTemplate: any;
   
-  constructor(private filterService : FilterService){
-  }
-  @Input() mode: 'appraisal' | 'review' = 'appraisal';
-  @Input() userData: any;
-  @Output() startAppraisalClicked = new EventEmitter<string>();
-  @Output() reviewAppraisalClicked = new EventEmitter<string>();
+  @Output() startAppraisal = new EventEmitter<string>();
+  @Output() continueAppraisal = new EventEmitter<string>();
+  @Output() reviewAppraisal = new EventEmitter<string>();
+  @Output() submit = new EventEmitter<string>();
+  @Output() viewDetails = new EventEmitter<string>();
   
-  ngOnInit(){
-    this.selectedMode = this.filterService.getContext();
-
-  this.subscription = this.filterService.context.subscribe(context => {
-    this.selectedMode = context;
-  });
+  selectedItems: string[] = [];
+  
+  ngOnInit() {
+    // Process items for display if needed
+    this.processItems();
   }
   
-   startAppraisalEmit(param: string) {
-    this.startAppraisalClicked.emit(param);
+  processItems() {
+    // Set default values or calculate derived values for items
+    this.items.forEach(item => {
+      // Format overdue/due dates for display
+      if (item.dueIn && !item.dueText) {
+        item.dueText = item.overdue ? 'Overdue by' : 'Due in';
+      }
+      
+      // For highlighting the currently selected item
+      if (item.selected) {
+        this.selectedItems.push(item.id);
+      }
+      
+      // Set default status values if needed
+      if (item.status === undefined) {
+        if (item.completed) {
+          item.status = 'Completed';
+        } else if (item.started) {
+          item.status = 'In Process';
+        } else {
+          item.status = 'New';
+        }
+      }
+    });
   }
-  reviewAppraisalEmit(param : string){
-    this.reviewAppraisalClicked.emit(param);
+  
+  isSelectedItem(item: any): boolean {
+    return this.selectedItems.includes(item.id);
   }
-
-  ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+  
+  onStartAppraisal(id: string) {
+    this.startAppraisal.emit(id);
+  }
+  
+  onContinueAppraisal(id: string) {
+    this.continueAppraisal.emit(id);
+  }
+  
+  onReviewAppraisal(id: string) {
+    this.reviewAppraisal.emit(id);
+  }
+  
+  onSubmit(id: string) {
+    this.submit.emit(id);
+  }
+  
+  onViewDetails(id: string) {
+    this.viewDetails.emit(id);
+  }
+  
+  // Helper method to select an item
+  selectItem(id: string) {
+    const index = this.selectedItems.indexOf(id);
+    if (index === -1) {
+      this.selectedItems.push(id);
+    } else {
+      this.selectedItems.splice(index, 1);
     }
-}
+  }
 }

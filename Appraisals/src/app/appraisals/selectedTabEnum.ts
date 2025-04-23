@@ -1,3 +1,3 @@
 export enum selectedTab {
-    ForAppraisals, ForPosting, ForReview
+    ForAppraisal, ForPosting, ForReview
 }

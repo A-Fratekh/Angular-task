@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ReviewService } from '../review.service';
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-review-details',
@@ -10,11 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ReviewDetailsComponent {
 review : any;
-constructor(private reviewService:ReviewService, private activeRouter : ActivatedRoute){}
+constructor(private dataService:DataService, private activeRouter : ActivatedRoute){}
   ngOnInit(): void {
     const appraisalId  = this.activeRouter.snapshot.paramMap.get('id');
     if(appraisalId){
-      this.reviewService.getReviewById(appraisalId).subscribe((data:any)=>{
+      this.dataService.getReviewById(appraisalId).subscribe((data:any)=>{
         this.review=data;
       });
     }

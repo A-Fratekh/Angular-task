@@ -1,69 +1,73 @@
-.card{
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3); 
+/* Card styling */
+.card {
+  transition: all 0.2s ease;
+  border: 1px solid #dee2e6;
 }
 
-.rounded-circle{
-    width: 40px;
-    height: 40px;
-}
-.button-outline-warning{
-    color: rgba(241, 130, 6, 1);
-    outline-color: rgba(241, 130, 6, 1);
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
-.btn-light{
-    background-color: white;
-    border: none;
-}
-.more-btn{
-    border: none;
+.border-primary {
+  border-left: 3px solid #0d6efd !important;
 }
 
-.more-btn:hover, .more-btn:active{
-    background-color: white;
-}
-.fs-7{
-    font-size: 14px;
-}
-.fs-8{
-    font-size: 12px;
+/* Button styling */
+.btn-outline-warning {
+  color: #ff8800;
+  border-color: #ff8800;
 }
 
+.btn-outline-warning:hover {
+  background-color: #ff8800;
+  color: white;
+}
+
+/* More link styling */
+.btn-link {
+  color: #6c757d;
+}
+
+.btn-link:hover {
+  color: #0d6efd;
+}
+
+/* Card header additional styling */
+.card-header {
+  background-color: transparent;
+}
 .circular-progress-wrapper {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .circular-progress {
-    width: 100%;
-    height: 100%;
-    transform: rotate(0deg);
-  }
-  
-  .circle-bg {
-    fill: none;
-    stroke: #d6d6d6;
-    stroke-width: 3;
-  }
-  
-  .circle {
-    fill: none;
-    stroke: #4caf50; /* green color */
-    stroke-width: 3;
-    stroke-linecap: round;
-    transition: stroke-dasharray 0.3s ease;
-  }
-  
-  .percentage {
-    fill: #333;
-    font-size: 0.5em;
-    dominant-baseline: middle;
-  }
-  .fa-chevron-right{
-    color:rgba(241, 130, 6, 1) ;
-  }
-  .btn-light:focus {
-    outline: none !important;
-    box-shadow: none !important;
-  }
-  
+  width: 50px;
+  height: 50px;
+}
+
+.circular-progress {
+  width: 100%;
+  height: 100%;
+  transform: rotate(0deg);
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #d6d6d6;
+  stroke-width: 3;
+}
+
+.circle {
+  fill: none;
+  stroke: #4caf50; /* green color */
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.3s ease;
+}
+
+.percentage {
+  fill: #333;
+  font-size: 0.5em;
+  dominant-baseline: middle;
+}
+
+.fs-7{
+  font-size: 10px;
+}

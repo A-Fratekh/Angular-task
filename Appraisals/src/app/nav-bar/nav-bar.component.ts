@@ -11,26 +11,14 @@ import { RouterLink, RouterModule } from '@angular/router';
 export class NavBarComponent implements OnInit {
   @Output() tabSelected  = new EventEmitter<string>();
   tabs = [
-    { 
-      label: 'For appraisal', 
-      route: 'appraisal', 
-      icon: 'fas fa-list-ul', 
-
-    },
-    { 
-      label: 'For posting', 
-      route: 'posting', 
-      icon: 'far fa-file-alt', 
-    },
-    { 
-      label: 'For review', 
-      route: 'review', 
-      icon: 'far fa-eye',  
-    }
+    { label: 'For appraisal', route: '/appraisals/appraisal', icon: 'fas fa-list-ul' },
+    { label: 'For posting', route: '/appraisals/posting', icon: 'far fa-file-alt' },
+    { label: 'For review', route: '/appraisals/review', icon: 'far fa-eye' }
   ];
 
   tabSelectedEmitter(param :string){
     this.tabSelected.emit(param);
+    
   }
   constructor() { }
 

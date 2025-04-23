@@ -21,4 +21,10 @@ body{
 * {
     font-family: 'Inter', sans-serif;
   }
-  
+  .fa-chevron-right{
+    color: #F18206;
+    width: 50%;
+  }
+  .filter{
+    background-color: #F8F7F7;
+}

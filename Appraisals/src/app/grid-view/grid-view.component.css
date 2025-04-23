@@ -1,135 +1,27 @@
-.postings-container {
-    background-color: #f5f5f5;
-    border-radius: 4px;
-    padding: 0;
-    width: 100%;
-    font-family: Arial, sans-serif;
-    display: flex;
-  }
+/* grid-view.component.css */
+.list-group-item {
+  border-radius: 0px;
+  border: none;
+  transition: background-color 0.2s;
+}
 
-  .posting-list {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-  }
-  
-  .posting-item {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    padding: 16px;
-    border-bottom: 1px solid #e0e0e0;
-    background-color: white;
-  }
+.list-group-item:hover {
+  background-color: #F4EDE3;
+}
 
+
+.progress-bar {
+  border-radius: 4px;
   
-  .posting-item:hover {
-    background-color: #f0f0f0;
-    cursor: pointer;
-  }
-  
-  .selection-checkbox {
-    margin-right: 0;
-    width: 20%;
-  }
-  
-  .employee-info {
-    display: flex;
-    align-items: center;
-    width: 30%;
-    margin-right: 16px;
-  }
-  
-  .employee-details {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .employee-details .employee-id {
-    font-weight: 400;
-    margin-bottom: 2px;
-  }
-  
-  .employee-details .employee-dept,
-  .employee-details .employee-position {
-    font-size: 12px;
-    color: #666;
-  }
-  .employee-photo{
-    margin-left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 45px;
-    width: 50%;
-  }
-  .posting-info {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-  }
-  
-  .posting-info .posting-title {
-    font-weight: 400;
-    margin-bottom: 2px;
-  }
-  
-  .posting-info .posting-level,
-  .posting-info .request-date {
-    font-size: 12px;
-    color: #666;
-  }
-  
-  .rating-section {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding-right: 24px;
-  }
-  
-  .rating-section .rating-text {
-    margin-bottom: 4px;
-    font-weight: 500;
-    font-size: 14px;
-  }
-  
-  .rating-section .rating-text.high {
-    color: var(--on-target);
-  }
-  
-  .rating-section .rating-text.medium {
-    color: var(--below-target);
-  }
-  
-  .rating-section .rating-text.low {
-    color: var(--at-risk);
-  }
-  
-  .rating-bar {
-    height: 6px;
-    background-color: #e0e0e0;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  
-  .rating-bar .rating-progress {
-    height: 100%;
-  }
-  
-  .rating-bar .rating-progress.high {
-    background-color: var(--on-target);
-  }
-  
-  .rating-bar .rating-progress.medium {
-    background-color: var(--submit);
-  }
-  
-  .rating-bar .rating-progress.low {
-    background-color: var(--at-risk);
-  }
-  
-  .chevron-icon {
-    color: #aaa;
-  }
-  
+}
+
+.bi-chevron-right {
+  color: #6c757d;
+}
+
+.btn-link:hover .bi-chevron-right {
+  color: #0d6efd;
+}
+.bg-danger{
+  background-color: #272727;
+}

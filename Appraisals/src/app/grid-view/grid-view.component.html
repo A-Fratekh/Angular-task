@@ -1,44 +1,75 @@
+<!-- grid-view.component.html -->
+<div class="container-fluid">
+  <div class="row mb-3 align-items-center">
+    <div class="col-md-8">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="selectAll" [(ngModel)]="allSelected" (change)="toggleSelectAll()">
+        <label class="form-check-label" for="selectAll">
+          Select all ({{ selectedItems.length }} out of {{ items.length }} selected)
+        </label>
+      </div>
+    </div>
+  </div>
 
-<div class="postings-container ">
-  <div class="posting-list">
-    <div class="posting-item">
-      <mat-checkbox [checked]="isSelected" (change)="toggleSelection()" class="selection-checkbox">
-      </mat-checkbox>
-      <div class="d-flex w-25">
-        <img class="employee-photo d-flex rounded-circle" [src]="postingData.image" alt="">
-      </div>
-      <div class="employee-info d-flex flex-row w-100">
-        <div class="employee-details d-flex flex-column w-100">
-          <div class="employee-id">{{ postingData.id }} | {{ postingData.name }}</div>
-          <div class="employee-dept">{{ postingData.department }}</div>
-          <div class="employee-position">{{ postingData.position }}</div>
+  <div class="list-group justify-content-between">
+    <div *ngFor="let item of filteredItems" class="list-group-item p-0 mb-1" [class.bg-light]="selectedItems.includes(item.id)">
+      <div class="row g-0 align-items-center">
+        <!-- Checkbox column -->
+        <div class="col-auto ps-3 py-3">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" [id]="'item-' + item.id" 
+                   [checked]="selectedItems.includes(item.id)"
+                   (change)="toggleSelection(item.id)">
+          </div>
         </div>
-      </div>
-
-      <div class="posting-info d-flex flex-column w-100">
-        <div class="posting-title">{{ postingData.postingType }}</div>
-        <div class="posting-level">{{ postingData.postingLevel }}</div>
-        <div class="request-date">Requested on: {{ postingData.requestDate }}</div>
-      </div>
-
-      <div class="rating-section d-flex flex-column w-50">
-        <div class="rating-text" *ngIf="postingData.rating >= 40">
-          {{ getRatingText(postingData.rating) }}
-          <span>: {{ postingData.rating }}/{{ postingData.maxRating }}</span>
+        
+        <!-- Avatar and user info column -->
+        <div class="col-md-3 d-flex">
+          <div class="ms-2 me-3">
+            <img [src]="item.image" alt="User avatar" class="rounded-circle" width="48" height="48">
+          </div>
+          <div>
+            <div class="fw-bold">{{ item.id }} | {{ item.name }}</div>
+            <div class="text-muted">{{ item.department }}</div>
+            <div class="text-muted">{{ item.position }}</div>
+          </div>
         </div>
-        <div class="rating-text" *ngIf="postingData.rating < 40">
-          {{ postingData.rating }}/{{ postingData.maxRating }}
+        
+        <!-- Review information column -->
+        <div class="col-md-4">
+          <div>{{ item.postingType }}</div>
+          <div class="text-muted">{{ item.postingLevel }}</div>
+          <div class="text-muted">Requested on: {{ item.requestDate }}</div>
         </div>
-        <div class="rating-bar">
-          <div class="rating-progress" [ngClass]="{
-                  'high': postingData.rating >= 70,
-                  'medium': postingData.rating >= 40 && postingData.rating < 70,
-                  'low': postingData.rating < 40
-                }" [style.width.%]="postingData.rating"></div>
+        
+        <!-- Rating column -->
+        <div class="col-md-2">
+          <div class="d-flex justify-content-between align-items-start flex-column p-2 rounded">
+            <div class="d-flex justify-content-between w-100 mb-2">
+              <span class="text-muted"> {{ getRatingLabel(item.rating) }} : {{ item.rating }}/{{ item.maxRating }}</span>
+            </div>
+            
+            <div class="d-flex w-50 border-0">
+              <ng-container *ngFor="let segment of [10, 10, 10, 10, 10]; let i = index">
+                <div 
+                  class="flex-grow-1 me-1" 
+                  [ngClass]="getSegmentColorClass(i, item.rating, item.maxRating)" 
+                  style="height: 8px;">
+                </div>
+              </ng-container>
+            </div>
+        
+          
+          </div>
         </div>
-      </div>
-      <div class="d-flex mx-3 bg-light ">
-        <i class="fa fa-chevron-right "></i>
+        <div class="col-1">
+          <div class="w-100 d-flex justify-content-end align-items-center mt-2">
+            <button class="btn btn-link text-decoration-none p-0">
+              <i class="fa fa-chevron-right fs-4"></i>
+            </button>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>
