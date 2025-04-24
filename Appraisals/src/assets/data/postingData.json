@@ -4,7 +4,7 @@
       "name": "Mohammad Ahmad",
       "department": "Food and beverage department",
       "position": "Accounting officer",
-      "postingType": "Mid year performance review",
+      "postingType": "Annual Review ",
       "postingLevel": "Managerial | Self",
       "image": "./assets/images/profile-posting.jpg",
       "rating": 30,
@@ -44,6 +44,54 @@
       "postingLevel": "Managerial | Self",
       "image": "./assets/images/profile-posting.jpg",
       "rating": 60,
+      "maxRating": 100,
+      "requestDate": "10/10/2023"
+    },
+    {
+      "id": "000085",
+      "name": "Saleem Mohammad",
+      "department": "Food and beverage department",
+      "position": "Support",
+      "postingType": "Mid year performance review",
+      "postingLevel": "Managerial | Self",
+      "image": "./assets/images/profile-posting.jpg",
+      "rating": 35,
+      "maxRating": 100,
+      "requestDate": "10/10/2023"
+    },
+    {
+      "id": "000050",
+      "name": "Mohammad Ahmad",
+      "department": "Food and beverage department",
+      "position": "Sales",
+      "postingType": "Mid year performance review",
+      "postingLevel": "Managerial | Self",
+      "image": "./assets/images/profile-posting.jpg",
+      "rating": 80,
+      "maxRating": 100,
+      "requestDate": "10/10/2023"
+    },    
+    {
+      "id": "000030",
+      "name": "Abdullah Saleem",
+      "department": "Food and beverage department",
+      "position": "Accounting officer",
+      "postingType": "Mid year performance review",
+      "postingLevel": "Managerial | Self",
+      "image": "./assets/images/profile-posting.jpg",
+      "rating": 90,
+      "maxRating": 100,
+      "requestDate": "10/10/2023"
+    },
+    {
+      "id": "000040",
+      "name": "Mohammad Ahmad",
+      "department": "Food and beverage department",
+      "position": "Developer",
+      "postingType": "Mid year performance review",
+      "postingLevel": "Managerial | Self",
+      "image": "./assets/images/profile-posting.jpg",
+      "rating": 100,
       "maxRating": 100,
       "requestDate": "10/10/2023"
     }

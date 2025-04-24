@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class GridViewComponent implements OnInit, OnChanges {
   @Input() items: any[] = [];
   @Input() adminUnits: string[] = [];
-  @Output() viewDetails = new EventEmitter<string>();
+  @Output() postingAppraisal = new EventEmitter<string>();
   @Output() selectionChange = new EventEmitter<string[]>();
 
   selectedUnit: string = '';
@@ -71,7 +71,7 @@ export class GridViewComponent implements OnInit, OnChanges {
   }
 
   onViewDetails(id: string) {
-    this.viewDetails.emit(id);
+    this.postingAppraisal.emit(id);
   }
 
   getRatingLabel(rating: number): string {
@@ -86,7 +86,7 @@ export class GridViewComponent implements OnInit, OnChanges {
   
     if (ratio >= thresholds[index]) {
       if (ratio >= 0.7) return 'bg-success';
-      if (ratio >= 0.4 && ratio<70) return '#FFC107';    
+      if (ratio >= 0.4 && ratio<70) return 'bg-warning';    
       if (ratio >= 0.2) return 'bg-danger';  
       return 'bg-danger';
     }

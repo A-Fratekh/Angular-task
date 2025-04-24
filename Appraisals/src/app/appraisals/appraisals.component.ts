@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { SearchService } from '../search.service';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { selectedTab } from './selectedTabEnum';
 import { DataService } from '../data.service';
 import { CommonModule } from '@angular/common';
@@ -30,13 +30,12 @@ export class AppraisalsComponent implements OnInit {
   periodType :string ='';
   adminUnit : string = '';
   appraisalTypes: string[] = ['Mid year performance review', 'Annual review', 'Probation review'];
-  periodTypes: string[] = ['Days', 'Months'];
-  adminUnits: string[] = ['Accounting', 'Dev', 'Sales'];
+  periodTypes: string[] = ['Days', 'Month'];
+  adminUnits: string[] = ['Accounting', 'Dev', 'Sales', 'Support'];
   
   constructor(
     private searchService: SearchService,
     private router: Router,
-    private route: ActivatedRoute,
     private dataService: DataService
   ) {}
 
@@ -55,14 +54,13 @@ export class AppraisalsComponent implements OnInit {
       this.selectedTab = selectedTab.ForReview;
       this.selectedTabStr = 'review'
     }
+
     
     this.loadData();
     
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      const path = this.router.url.split('/').pop();
-      
       this.loadData();
     });
     
@@ -97,11 +95,11 @@ export class AppraisalsComponent implements OnInit {
   applyFilters() {
     let results = [...this.data];
 
-    if (this.filter === 'process') {
-      results = results.filter(item => !item.completed);
-    } else {
-      results = results.filter(item => item.completed);
-    }
+    // if (this.filter === 'process') {
+    //   results = results.filter(item => !item.completed);
+    // } else {
+    //   results = results.filter(item => item.completed);
+    // }
 
     if (this.appraisalType) {
       results = results.filter(item => 
@@ -137,7 +135,6 @@ export class AppraisalsComponent implements OnInit {
     }
   
 switchTabHandler(tab: string) {
-    // Update URL based on tab
     
     let routeParam = '';
     switch (tab) {
@@ -167,32 +164,24 @@ switchTabHandler(tab: string) {
   reviewAppraisalHandler(id:string){
     this.router.navigate(['appraisals/review', id])
   }
-  
+  postingAppraisalHandler(id:string){
+    this.router.navigate(['appraisals/posting', id])
+  }
   searchChangeHandler(searchString: string) {
     const lowerSearch = searchString.toLowerCase().trim();
-    
-    if (!lowerSearch) {
-      this.applyFilters();
-      return;
-    }
- 
-    let results = [...this.data];
- 
+    let results : any[] = [...this.data] ;
+  
     results = results.filter((item: any) =>
       Object.values(item).some(val =>
         String(val).toLowerCase().includes(lowerSearch)
       )
     );
     
-    // Update the filtered list
     this.filteredList = results;
-    
-    // Then apply the regular filters
-    this.applyFilters();
-  }
-  
-  onGlobalSearch(query: string) {
-    this.searchService.updateSearch(query);
+    if (!lowerSearch) {
+      this.filteredList = [...this.data]
+      return;
+    }
   }
   
   getCountForTab(tab: selectedTab): number {

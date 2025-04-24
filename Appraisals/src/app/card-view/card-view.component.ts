@@ -25,35 +25,8 @@ export class CardViewComponent implements OnInit {
   selectedItems: string[] = [];
   
   ngOnInit() {
-    // Process items for display if needed
-    this.processItems();
   }
-  
-  processItems() {
-    // Set default values or calculate derived values for items
-    this.items.forEach(item => {
-      // Format overdue/due dates for display
-      if (item.dueIn && !item.dueText) {
-        item.dueText = item.overdue ? 'Overdue by' : 'Due in';
-      }
-      
-      // For highlighting the currently selected item
-      if (item.selected) {
-        this.selectedItems.push(item.id);
-      }
-      
-      // Set default status values if needed
-      if (item.status === undefined) {
-        if (item.completed) {
-          item.status = 'Completed';
-        } else if (item.started) {
-          item.status = 'In Process';
-        } else {
-          item.status = 'New';
-        }
-      }
-    });
-  }
+
   
   isSelectedItem(item: any): boolean {
     return this.selectedItems.includes(item.id);
