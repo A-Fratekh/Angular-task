@@ -1,7 +1,7 @@
 /* Card styling */
 .card {
   transition: all 0.2s ease;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--border);
 }
 
 .card:hover {
@@ -9,36 +9,22 @@
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
-.border-primary {
-  border-left: 3px solid #0d6efd !important;
-}
-
 .btn-outline-warning {
-  color: #ff8800;
-  border-color: #ff8800;
+  color: var(--btn-primary);
+  border-color: var(--btn-primary);
 }
 
 .btn-outline-warning:hover {
-  background-color: #ff8800;
+  background-color: var(--btn-primary);
   color: white;
 }
 
-/* More link styling */
-.btn-link {
-  color: #6c757d;
-}
-
-.btn-link:hover {
-  color: #0d6efd;
-}
-
-/* Card header additional styling */
 .card-header {
   background-color: transparent;
 }
 .circular-progress-wrapper {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
 .circular-progress {
@@ -49,21 +35,21 @@
 
 .circle-bg {
   fill: none;
-  stroke: #d6d6d6;
+  stroke: var(--main-bg) ;
   stroke-width: 3;
 }
 
 .circle {
   fill: none;
-  stroke: #4caf50; /* green color */
+  stroke: var(--circle-progress);
   stroke-width: 3;
   stroke-linecap: round;
   transition: stroke-dasharray 0.3s ease;
 }
 
 .percentage {
-  fill: #333;
-  font-size: 0.5em;
+  fill: var(--label-primary);
+  font-size: 0.6em;
   dominant-baseline: middle;
 }
 

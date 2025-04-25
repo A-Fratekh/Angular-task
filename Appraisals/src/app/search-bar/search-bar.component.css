@@ -10,7 +10,7 @@
     border-radius: 30px;
     padding-left: 35px;
     border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px var(--box-shadow);
 }
 
 .search-input-posting {
@@ -20,7 +20,7 @@
     padding-left: 30px;
     margin-left: 10px;
     border: none;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px var(--box-shadow);
 }
 
 .search-icon {
@@ -28,10 +28,10 @@
     top: 50%;
     left: 15px;
     transform: translateY(-50%);
-    color: var(--submit);
+    color: var(--btn-primary);
 }
 .btn-post{
-color: white;
+color: var(--btn-secondary);
 }
 .btn-post, .btn-export{
     display: flex;
@@ -40,8 +40,9 @@ color: white;
     max-height: 30px;
     min-width: 80px ;
     margin: 0 2px;
+    border: 1px solid var(--border);
 }
 .btn-post:active, .btn-post:focus, .btn-export:active, .btn-export:focus{
     color: black;
-    border-color: var(--submit);
+    border-color: var(--btn-primary);
 }

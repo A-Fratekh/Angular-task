@@ -1,24 +1,18 @@
-/* grid-view.component.css */
 .list-group-item {
+  min-height: 80px;
   border-radius: 0px;
   border: none;
   transition: background-color 0.2s;
 }
 
-.list-group-item:hover {
-  background-color: #F4EDE3;
+.list-group-item:hover, .list-group-item:nth-child(odd):hover {
+  background-color: var(--posting-list-hover );
 }
-
+.list-group-item:nth-child(odd){
+  background-color: var(--filter-bg);
+}
 
 .progress-bar {
-  border-radius: 4px;
-  
-}
-
-.bi-chevron-right {
-  background-color: white;
-}
-
-.btn-link:hover .bi-chevron-right {
-  color: #0d6efd;
+  border-radius: 2px;
+  height: 8px;
 }

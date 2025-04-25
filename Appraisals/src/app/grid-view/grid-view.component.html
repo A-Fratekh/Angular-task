@@ -1,7 +1,6 @@
-<!-- grid-view.component.html -->
-<div class="container-fluid d-flex flex-column w-100 justify-content-center">
-  <div class="row mb-3 align-items-center">
-    <div class="col-md-8">
+<div class="container-fluid">
+  <div class="row mb-3">
+    <div class="col-12">
       <div class="form-check">
         <input type="checkbox" class="form-check-input" id="selectAll" [(ngModel)]="allSelected" (change)="toggleSelectAll()">
         <label class="form-check-label" for="selectAll">
@@ -11,65 +10,54 @@
     </div>
   </div>
 
-  <div class="list-group justify-content-evenly">
-    <div *ngFor="let item of filteredItems" class="list-group-item p-0 mb-1" [class.bg-light]="selectedItems.includes(item.id)">
-      <div class="row align-items-center">
-        <!-- Checkbox column -->
-        <div class="col-auto d-flex flex-column flex-md-row ps-3 py-3">
+  <div class="list-group">
+    <div *ngFor="let item of filteredItems" class="list-group-item p-3 mb-2" [class.bg-light]="selectedItems.includes(item.id)">
+      <div class="row gy-3 gx-2 align-items-center">
+
+        <div class="col-auto">
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" [id]="'item-' + item.id" 
+            <input type="checkbox" class="form-check-input" [id]="'item-' + item.id"
                    [checked]="selectedItems.includes(item.id)"
                    (change)="toggleSelection(item.id)">
           </div>
         </div>
-        
-        <!-- Avatar and user info column -->
-        <div class="col-auto d-flex  justify-content-center align-items-center" >
-          <div class="ms-2 me-3">
-            <img [src]="item.image" alt="User avatar" class="rounded-circle" width="48" height="48">
-          </div>
+
+        <div class="col-12 col-md-4 d-flex align-items-center">
+          <img [src]="item.image" alt="User avatar" class="rounded-circle me-3" width="48" height="48">
           <div>
             <div class="fw-bold">{{ item.id }} | {{ item.name }}</div>
             <div class="text-muted">{{ item.department }}</div>
             <div class="text-muted">{{ item.position }}</div>
           </div>
         </div>
-        
-        <!-- Review information column -->
-        <div class="col-4 mx-4 d-flex flex-column justify-content-center align-items-start" >
+
+        <div class="col-12 col-md-4 text-md-start text-center">
           <div>{{ item.postingType }}</div>
           <div class="text-muted">{{ item.postingLevel }}</div>
           <div class="text-muted">Requested on: {{ item.requestDate }}</div>
         </div>
-        
-        <!-- Rating column -->
-        <div class="col-2">
-          <div class="d-flex justify-content-center justify-content-start align-items-center flex-column p-2 rounded">
-            <div class="d-flex justify-content-center w-100 mb-2">
-              <span class="fw-semibold fs-7"> {{ getRatingLabel(item.rating) }} : {{ item.rating }}/{{ item.maxRating }}</span>
-            </div>
-            
-            <div class="d-flex w-75 border-0">
-              <ng-container *ngFor="let segment of [10, 10, 10, 10, 10]; let i = index">
-                <div 
-                  class="flex-grow-1 me-1" 
-                  [ngClass]="getSegmentColorClass(i, item.rating, item.maxRating)" 
-                  style="height: 8px;">
+
+        <div class="col-12 col-md-3">
+          <div class="d-flex flex-column align-items-md-start align-items-center">
+            <div class="fw-semibold mb-1">{{ getRatingLabel(item.rating) }}: {{ item.rating }}/{{ item.maxRating }}</div>
+            <div class="d-flex w-40 justify-content-center justify-content-md-start">
+              <ng-container *ngFor="let segment of [10, 10, 10, 10]; let i = index">
+                <div class="flex-grow-1 me-1 progress-bar"
+                     [ngClass]="getSegmentColorClass(i, item.rating, item.maxRating)">
                 </div>
               </ng-container>
             </div>
-        
-          
           </div>
         </div>
-        <div class="col-1" >
-          <div class="w-100 d-flex justify-content-end align-items-center mt-2">
+
+        <div class="col-auto">
+          <div class=" d-flex justify-content-end align-items-end">
             <button class="btn btn-link text-decoration-none p-0" (click)="onViewDetails(item.id)">
               <i class="fa fa-chevron-right fs-4"></i>
             </button>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>

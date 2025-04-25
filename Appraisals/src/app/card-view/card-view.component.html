@@ -8,7 +8,7 @@
           <div class="text-muted small">
             {{ item.cpdua || item.id }}
           </div>
-          <ng-container *ngIf="selectedTab === 'appraisal' && view==='process'">
+          <ng-container *ngIf="selectedTab === 'appraisal' && view==='process' && item.progress">
             <div class="circular-progress-wrapper">
               <svg class="circular-progress" viewBox="0 0 36 36">
                 <path class="circle-bg" d="M18 2.0845

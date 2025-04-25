@@ -93,4 +93,5 @@ export class GridViewComponent implements OnInit, OnChanges {
     return 'bg-light';
   }
   
+  
 }

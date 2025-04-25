@@ -95,11 +95,6 @@ export class AppraisalsComponent implements OnInit {
   applyFilters() {
     let results = [...this.data];
 
-    // if (this.filter === 'process') {
-    //   results = results.filter(item => !item.completed);
-    // } else {
-    //   results = results.filter(item => item.completed);
-    // }
 
     if (this.appraisalType) {
       results = results.filter(item => 
@@ -107,7 +102,6 @@ export class AppraisalsComponent implements OnInit {
       );
     }
     
-    // Apply period type filter if one is selected
     if (this.periodType) {
       results = results.filter(item => 
         item.dueIn === this.periodType ||
@@ -148,8 +142,6 @@ switchTabHandler(tab: string) {
         routeParam = 'review' ;
         break;
     }
-
-    console.log(routeParam);
     this.router.navigate(['/appraisals', routeParam]);
   }
   
@@ -184,16 +176,4 @@ switchTabHandler(tab: string) {
     }
   }
   
-  getCountForTab(tab: selectedTab): number {
-    switch (tab) {
-      case selectedTab.ForAppraisal:
-        return this.data.filter(item => !item.completed).length;
-      case selectedTab.ForPosting:
-        return this.data.filter(item => item).length;
-      case selectedTab.ForReview:
-        return this.data.filter(item => item).length;
-      default:
-        return 0;
-    }
-  }
 }
