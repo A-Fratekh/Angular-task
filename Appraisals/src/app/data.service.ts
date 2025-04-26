@@ -21,13 +21,19 @@ export class DataService {
 
    getReviewById(id: string): Observable<any> {
       return this.getReviews().pipe(
-        map((reviews:any) => reviews.find((reviews:any) => reviews.id === id))
+        map((review:any) => review.find((reviews:any) => reviews.id === id))
       );
     }
 
   getAppraisalById(id: string): Observable<any> {
     return this.getAppraisals().pipe(
       map((appraisals:any) => appraisals.find((appraisal:any) => appraisal.id === id))
+    );
+  }
+
+  getPostibgById(id: string): Observable<any> {
+    return this.getPostings().pipe(
+      map((posting:any) => posting.find((posting:any) => posting.id === id))
     );
   }
 

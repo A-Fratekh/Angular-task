@@ -11,11 +11,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class GridViewComponent implements OnInit, OnChanges {
   @Input() items: any[] = [];
-  @Input() adminUnits: string[] = [];
+  @Input() adminUnit: string = '';
   @Output() postingAppraisal = new EventEmitter<string>();
   @Output() selectionChange = new EventEmitter<string[]>();
-
-  selectedUnit: string = '';
+ 
   selectedItems: string[] = [];
   allSelected: boolean = false;
   filteredItems: any[] = [];
@@ -30,19 +29,6 @@ export class GridViewComponent implements OnInit, OnChanges {
       this.updateSelectAllState();
     }
   }
-
-  onAdminUnitChange() {
-    if (!this.selectedUnit) {
-      this.filteredItems = [...this.items];
-    } else {
-      this.filteredItems = this.items.filter(item => 
-        item.department.includes(this.selectedUnit) || 
-        item.position.includes(this.selectedUnit)
-      );
-    }
-    this.updateSelectAllState();
-  }
-
   toggleSelectAll() {
     if (this.allSelected) {
       this.selectedItems = this.filteredItems.map(item => item.id);
@@ -66,11 +52,11 @@ export class GridViewComponent implements OnInit, OnChanges {
   updateSelectAllState() {
     this.allSelected = this.filteredItems.length > 0 && 
                       this.filteredItems.every(item => 
-                        this.selectedItems.includes(item.id)
+                        this.selectedItems.includes(item.adminUnit)
                       );
   }
 
-  onViewDetails(id: string) {
+  onPostingDetails(id: string) {
     this.postingAppraisal.emit(id);
   }
 

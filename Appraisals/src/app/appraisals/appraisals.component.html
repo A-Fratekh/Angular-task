@@ -76,7 +76,8 @@
 <ng-container *ngIf="selectedTab===selectedTabEnum.ForAppraisal || selectedTab===selectedTabEnum.ForReview">
     <app-card-view [items]="filteredList" [view]="filter" [headerTemplate]="cardHeader" [bodyTemplate]="cardBody"
         [selectedTab]="selectedTabStr" [footerTemplate]="cardFooter" (startAppraisal)="startAppraisalHandler($event)"
-        (continueAppraisal)="continueAppraisalHandler($event)" (reviewAppraisal)="reviewAppraisalHandler($event)">
+        (continueAppraisal)="continueAppraisalHandler($event)" (reviewAppraisal)="reviewAppraisalHandler($event)" (submit)="continueAppraisalHandler($event)"
+        (viewDetails)="reviewAppraisalHandler($event)">
 
     </app-card-view>
 
@@ -91,6 +92,6 @@
 </ng-container>
 
 <ng-container *ngIf="selectedTab === selectedTabEnum.ForPosting">
-    <app-grid-view [items]="filteredList" [adminUnits]="adminUnits" (postingAppraisal)="postingAppraisalHandler($event)">
+    <app-grid-view [items]="filteredList" [adminUnit]="adminUnit" (postingAppraisal)="postingAppraisalHandler($event)">
     </app-grid-view>
 </ng-container>

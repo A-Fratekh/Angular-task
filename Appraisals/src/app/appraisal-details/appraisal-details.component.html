@@ -1,5 +1,22 @@
-<h1>
-    Welcome to appraisal {{appraisal.id}}
-</h1>
-<p>This appraisal is {{appraisal.dueText}} {{appraisal.dueIn}}</p>
-<p>Appraisal context : {{appraisal.reviewTitle}}</p>
+<div class="container my-4">
+    <h1 class="details-text-primary">Appraisal {{appraisal.id}}</h1>
+
+    <div class="d-flex align-items-center my-4">
+        <div>
+            <h2 class="h5 mb-1">{{appraisal.name}}</h2>
+            <p class="text-muted mb-0">{{appraisal.role}}</p>
+        </div>
+    </div>
+
+    <p><strong>Appraisal Context:</strong> {{appraisal.reviewTitle}}</p>
+    <p><strong>Status:</strong> {{appraisal.status}}</p>
+
+    <p>
+        <strong>{{appraisal.dueText}}:</strong> {{appraisal.dueIn}}<br>
+
+        <ng-container *ngIf="appraisal.submitted">
+            <strong>{{appraisal.submittedText}}:</strong> {{appraisal.submittedOn}}
+        </ng-container>
+       
+    </p>
+</div>

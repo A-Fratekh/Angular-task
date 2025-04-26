@@ -41,7 +41,6 @@ export class AppraisalsComponent implements OnInit {
 
   
   ngOnInit() {
-    // First load the data based on the current URL
     const path = this.router.url.split('/').pop();
         
     if (path === 'appraisal') {
@@ -109,7 +108,7 @@ export class AppraisalsComponent implements OnInit {
       );
     }
 
-    if(this.adminUnit){
+    if(this.selectedTabStr==='posting'&&this.adminUnit){
       results = results.filter(item => 
         item.position === this.adminUnit ||
         (typeof item.position === 'string' && item.position.includes(this.adminUnit))

@@ -1,1 +1,22 @@
-<p>posting-details works!</p>
+<ng-container *ngIf="posting">
+<div class="container my-4">
+    <h1 class="details-text-primary">Posting Details {{posting.id}}</h1>
+
+    <div class="d-flex align-items-center my-4">
+        <div>
+            <h2 class="h5 mb-1">{{posting.name}}</h2>
+            <p class="text-muted mb-0">{{posting.position}} - {{posting.department}}</p>
+        </div>
+    </div>
+
+    <p><strong>Posting Type:</strong> {{posting.postingType}}</p>
+    <p><strong>Posting Level:</strong> {{posting.postingLevel}}</p>
+
+    <div class="mb-3">
+        <strong>Rating:</strong>
+                {{posting.rating}} / {{posting.maxRating}}
+    </div>
+
+    <p><strong>Request Date:</strong> {{posting.requestDate}}</p>
+</div>
+</ng-container>

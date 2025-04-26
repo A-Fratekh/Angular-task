@@ -51,8 +51,7 @@ export class CardViewComponent implements OnInit {
   onViewDetails(id: string) {
     this.viewDetails.emit(id);
   }
-  
-  // Helper method to select an item
+
   selectItem(id: string) {
     const index = this.selectedItems.indexOf(id);
     if (index === -1) {

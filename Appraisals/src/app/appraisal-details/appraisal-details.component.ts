@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-appraisal-details',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './appraisal-details.component.html',
   styleUrl: './appraisal-details.component.css'
 })

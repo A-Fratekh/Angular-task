@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-4 d-flex align-items-center">
+        <div class="col-12 col-md-4 d-flex justify-content-center  justify-content-md-start align-items-center">
           <img [src]="item.image" alt="User avatar" class="rounded-circle me-3" width="48" height="48">
           <div>
             <div class="fw-bold">{{ item.id }} | {{ item.name }}</div>
@@ -50,10 +50,10 @@
           </div>
         </div>
 
-        <div class="col-auto">
-          <div class=" d-flex justify-content-end align-items-end">
-            <button class="btn btn-link text-decoration-none p-0" (click)="onViewDetails(item.id)">
-              <i class="fa fa-chevron-right fs-4"></i>
+        <div class="col-12 col-md-auto">
+          <div class=" d-flex align-items-end ">
+            <button class="btn w-100 d-flex btn-link justify-content-end text-decoration-none p-0" (click)="onPostingDetails(item.id)">
+              <i class="fa fa-chevron-right text-end fs-5"></i>
             </button>
           </div>
         </div>
