@@ -11,8 +11,8 @@
 <ng-container *ngIf="selectedTab===selectedTabEnum.ForAppraisal || selectedTab===selectedTabEnum.ForReview">
 
     <div
-        class="d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-center rounded p-4 mb-4 filter">
-        <div class="d-flex w-50 flex-grow-1 justify-content-center justify-content-md-start align-items-center mb-4 mb-md-0">
+        class="d-flex flex-column flex-lg-row justify-content-center justify-content-md-start align-items-center rounded p-4 mb-4 filter">
+        <div class="d-flex w-50 flex-grow-1 justify-content-center justify-content-md-start align-items-center mb-4 mb-lg-0">
             <label class="label mb-0">Show:</label>
             <div class="form-check form-check-flex">
                 <label class="radio-option">
@@ -30,11 +30,11 @@
             </div>
         </div>
 
-        <div class="d-flex flex-column flex-md-row w-100 justify-content-center justify-content-md-start align-items-center">
+        <div class="d-flex flex-column flex-lg-row w-100 justify-content-center justify-content-md-start align-items-center">
             <div
-                class="filter-dropdowns d-flex justify-content-center justify-content-md-start mb-4 mb-md-0 align-items-center">
+                class="filter-dropdowns d-flex justify-content-center justify-content-md-start mb-4 mb-lg-0 align-items-center">
                 <div class="dropdown-container">
-                    <span class="dropdown-label mx-4 mx-md-2 w-100" for="appraisalType">Appraisal type:</span>
+                    <span class="dropdown-label mx-4 mx-lg-1 w-100" for="appraisalType">Appraisal type:</span>
                     <select id="appraisalType" class="dropdown text-small text-muted fs-7" [(ngModel)]="appraisalType"
                         (change)="filterByAppraisalType()">
                         <option value="">Select</option>
@@ -43,9 +43,9 @@
                 </div>
             </div>
             <div *ngIf="filter === 'process'"
-                class="filter-dropdowns flex-column flex-md-row d-flex justify-content-center justify-content-md-start  align-items-center">
+                class="filter-dropdowns flex-column flex-lg-row d-flex justify-content-center justify-content-md-start  align-items-center">
                 <div class="dropdown-container">
-                    <span class="dropdown-label mx-4 mx-md-2 w-100" for="periodType">Period:</span>
+                    <span class="dropdown-label mx-4 mx-lg-2 w-100" for="periodType">Period:</span>
                     <select id="periodType" class="dropdown text-small text-muted fs-7" [(ngModel)]="periodType"
                         (change)="filterByPeriodType()">
                         <option value="">Select</option>
@@ -59,7 +59,7 @@
 
 <ng-container *ngIf="selectedTab===selectedTabEnum.ForPosting">
     <div
-        class="d-flex flex-column flex-md-row align-items-center justify-content-start border-0 rounded p-3 mb-4 filter">
+        class="d-flex flex-column flex-lg-row align-items-center justify-content-start border-0 rounded p-3 mb-4 filter">
         <div class="d-flex align-items-center">
             <div class="dropdown-container">
                 <span class="dropdown-label mx-2 w-100" for="adminUnit">Admin Unit:</span>

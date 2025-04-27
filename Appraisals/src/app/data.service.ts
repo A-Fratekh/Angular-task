@@ -21,7 +21,7 @@ export class DataService {
 
    getReviewById(id: string): Observable<any> {
       return this.getReviews().pipe(
-        map((review:any) => review.find((reviews:any) => reviews.id === id))
+        map((reviews:any) => reviews.find((review:any) => review.id === id))
       );
     }
 
@@ -33,7 +33,7 @@ export class DataService {
 
   getPostibgById(id: string): Observable<any> {
     return this.getPostings().pipe(
-      map((posting:any) => posting.find((posting:any) => posting.id === id))
+      map((postings:any) => postings.find((posting:any) => posting.id === id))
     );
   }
 

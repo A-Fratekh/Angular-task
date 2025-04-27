@@ -52,12 +52,4 @@ export class CardViewComponent implements OnInit {
     this.viewDetails.emit(id);
   }
 
-  selectItem(id: string) {
-    const index = this.selectedItems.indexOf(id);
-    if (index === -1) {
-      this.selectedItems.push(id);
-    } else {
-      this.selectedItems.splice(index, 1);
-    }
-  }
 }
