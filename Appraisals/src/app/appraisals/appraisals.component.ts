@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { SearchService } from '../search.service';
@@ -32,7 +32,8 @@ export class AppraisalsComponent implements OnInit {
   appraisalTypes: string[] = ['Mid year performance review', 'Annual review', 'Probation review'];
   periodTypes: string[] = ['Days', 'Month'];
   adminUnits: string[] = ['Accounting', 'Dev', 'Sales', 'Support'];
-  
+
+
   constructor(
     private searchService: SearchService,
     private router: Router,

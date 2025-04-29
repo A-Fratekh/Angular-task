@@ -1,72 +1,83 @@
+
 <div class="row g-4">
-  <div *ngFor="let item of items" class="col-12 col-md-4">
+  @for (item of items; track item) {
+  <div class="col-12 col-md-4">
     <div class="card h-100 shadow-sm rounded-3"
       [ngClass]="{'border-primary': isSelectedItem(item) && view === 'process'}">
-      <!-- Card Header -->
-      <div class="card-header bg-white border-0 pt-3 pb-0 d-flex align-items-center">
-        <div class="d-flex w-100 justify-content-between align-items-center">
-          <div class="text-muted small">
-            {{ item.cpdua || item.id }}
-          </div>
-          <ng-container *ngIf="selectedTab === 'appraisal' && view==='process' && item.progress">
+      <ng-container [ngTemplateOutlet]=" headerTemplate|| forAppraisalHeader" [ngTemplateOutletContext]="{$implicit:item}"> </ng-container>
+      <ng-template #forAppraisalHeader>
+        <div class="card-header bg-white border-0 pt-3 pb-0 d-flex align-items-center">
+          <div class="d-flex w-100 justify-content-between align-items-center">
+            <div class="text-muted small">
+              {{ item.cpdua || item.id }}
+            </div>
+            @if(item.progress){
             <div class="circular-progress-wrapper">
               <svg class="circular-progress" viewBox="0 0 36 36">
                 <path class="circle-bg" d="M18 2.0845
-                     a 15.9155 15.9155 0 0 1 0 31.831
-                     a 15.9155 15.9155 0 0 1 0 -31.831" />
+                 a 15.9155 15.9155 0 0 1 0 31.831
+                 a 15.9155 15.9155 0 0 1 0 -31.831" />
                 <path class="circle" [attr.stroke-dasharray]="item.progress + ', 100'" d="M18 2.0845
-                     a 15.9155 15.9155 0 0 1 0 31.831
-                     a 15.9155 15.9155 0 0 1 0 -31.831" />
+                 a 15.9155 15.9155 0 0 1 0 31.831
+                 a 15.9155 15.9155 0 0 1 0 -31.831" />
                 <text x="18" y="20.35" class="percentage fw-bold fs-7" text-anchor="middle">
                   {{ item.progress }}%
                 </text>
               </svg>
             </div>
-          </ng-container>
-        </div>
-      </div>
-
-      <!-- Card Body -->
-      <div class="card-body pt-2">
-        <!-- User Info -->
-        <div class="d-flex align-items-center mb-3">
-          <img [src]="item.image" alt="Avatar" class="rounded-circle me-2" width="36" height="36">
-          <div>
-            <div class="fw-semibold">{{ item.id }} | {{ item.name }}</div>
-            <div class="text-muted small">{{ item.role || item.position }}</div>
+          }
           </div>
         </div>
+      </ng-template>
 
-        <!-- Review Details -->
-        <div>
-          <div class="mb-2">
-            <i class="fa fa-clipboard-check me-2 text-secondary"></i>{{ item.reviewTitle || item.reviewType ||
-            item.postingType }}
+
+      <ng-container [ngTemplateOutlet]="bodyTemplate || forAppraisalContent " [ngTemplateOutletContext]="{$implicit:item}"> </ng-container>
+      <ng-template #forAppraisalContent>
+
+        <div class="card-body pt-2">
+          <!-- User Info -->
+          <div class="d-flex align-items-center mb-3">
+            <img [src]="item.image" alt="Avatar" class="rounded-circle me-2" width="36" height="36">
+            <div>
+              <div class="fw-semibold">{{ item.id }} | {{ item.name }}</div>
+              <div class="text-muted small">{{ item.role || item.position }}</div>
+            </div>
           </div>
+  
+          <!-- Review Details -->
           <div>
-            <i class="fa fa-calendar me-2 text-secondary"></i>
-            <ng-container *ngIf="view==='process'">
+            <div class="mb-2">
+              <i class="fa fa-clipboard-check me-2 text-secondary"></i>{{ item.reviewTitle || item.reviewType ||
+              item.postingType }}
+            </div>
+            <div>
+              <i class="fa fa-calendar me-2 text-secondary"></i>
+              @if(view==='process'){
               <span [ngClass]="{ 'text-danger': item.overdue, 'text-muted': !item.overdue }">
-                <ng-container *ngIf="item.dueIn && !item.overdue">Due in {{ item.dueIn }}</ng-container>
-                <ng-container *ngIf="item.dueIn && item.overdue">Overdue by {{ item.dueIn }}</ng-container>
-                <ng-container *ngIf="!item.dueIn && item.overdue">Overdue by {{ item.overdue }}</ng-container>
+                @if(item.dueIn && !item.overdue){
+                Due in {{ item.dueIn }}
+                }
+                @else if (item.dueIn && item.overdue) {
+                Overdue by {{ item.dueIn }}
+                }
               </span>
-            </ng-container>
-            <ng-container *ngIf="view==='history'">
+              }@else if (view==='history') {
               <span [ngClass]="{ 'text-success': item.submitted, 'text-muted': !item.submitted }">
-                <ng-container *ngIf="item.submitted ">{{item.submittedText}} : {{ item.submittedOn }}</ng-container>
-                <ng-container *ngIf="!item.submitted ">Not submitted!</ng-container>
+                {{item.submitted===true ? `${item.submittedText} : ${item.submittedOn}` : `Not submitted!`}}
               </span>
-            </ng-container>
-
+              }
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Card Footer -->
-      <div class="card-footer bg-white border-0 pt-0">
-        <!-- For Appraisals Tab -->
-        <ng-container *ngIf="selectedTab==='appraisal' && view === 'process' ">
+      </ng-template>
+
+
+      <ng-container [ngTemplateOutlet]="footerTemplate || forAppraisalFooter" [ngTemplateOutletContext]="{$implicit:item}"> </ng-container>
+      <ng-template #forAppraisalFooter>
+        <div class="card-footer bg-white border-0 pt-0">
+          <!-- For Appraisals Tab -->
+          @if(view==='process'){
           <div class="d-flex justify-content-center justify-content-md-end align-items-center">
             <div class="d-flex w-100 justify-content-end mx-2 align-items-center">
               <button class="btn btn-link text-decoration-none text-muted p-0 fs-6">
@@ -74,42 +85,33 @@
               </button>
             </div>
             <div class="d-flex w-75 justify-content-center justify-content-md-end align-items-center">
-              <button *ngIf="item.status==='New'" class="btn btn-outline-warning btn-sm px-3 w-100"
-                (click)="onStartAppraisal(item.id)">
+  
+              @if (item.status==='New') {
+              <button class="btn btn-outline-warning btn-sm px-3 w-100" (click)="onStartAppraisal(item.id)">
                 Start appraisal
               </button>
-              <button *ngIf="item.status==='In Process' && !item.completed"
-                class="btn btn-outline-warning btn-sm px-3 w-100" (click)="onContinueAppraisal(item.id)">
+              }@else if (item.status==='In Process' && !item.completed) {
+              <button class="btn btn-outline-warning btn-sm px-3 w-100" (click)="onContinueAppraisal(item.id)">
                 Continue appraisal
               </button>
-              <button *ngIf="item.status==='Ready'" class="btn btn-outline-warning btn-sm px-3 w-100"
-                (click)="onSubmit(item.id)">
+              }@else {
+              <button class="btn btn-outline-warning btn-sm px-3 w-100" (click)="onSubmit(item.id)">
                 Submit
               </button>
+              }
             </div>
           </div>
-        </ng-container>
-
-        <!-- For Review Tab -->
-        <ng-container *ngIf="selectedTab==='review' && view === 'process'">
-          <div class="d-flex w-100 justify-content-end">
-            <div class="d-flex w-40 justify-content-end align-items-center">
-              <button class="btn btn-outline-warning btn-sm px-3 w-100" (click)="onReviewAppraisal(item.id)">
-                Review
-              </button>
-            </div>
-          </div>
-        </ng-container>
-
-        <!-- History View -->
-        <ng-container *ngIf="view === 'history'">
+        }
+           @else if(view==='history'){
           <div class="d-flex justify-content-end w-100 bg-white">
             <button class="btn btn-sm" (click)="onViewDetails(item.id)">
               <i class="fa fa-chevron-right "></i>
             </button>
           </div>
-        </ng-container>
-      </div>
+          }
+        </div>
+      </ng-template>
     </div>
   </div>
+}
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,13 +12,12 @@ export class CardViewComponent implements OnInit {
   @Input() items: any[] = [];
   @Input() view: 'process' | 'history' = 'process';
   @Input() selectedTab: string = '';
-  @Input() headerTemplate: any;
-  @Input() bodyTemplate: any;
-  @Input() footerTemplate: any;
+  @Input() headerTemplate!: TemplateRef<any>;
+  @Input() bodyTemplate!: TemplateRef<any>;
+  @Input() footerTemplate!: TemplateRef<any>;
   
   @Output() startAppraisal = new EventEmitter<string>();
   @Output() continueAppraisal = new EventEmitter<string>();
-  @Output() reviewAppraisal = new EventEmitter<string>();
   @Output() submit = new EventEmitter<string>();
   @Output() viewDetails = new EventEmitter<string>();
   
@@ -40,9 +39,6 @@ export class CardViewComponent implements OnInit {
     this.continueAppraisal.emit(id);
   }
   
-  onReviewAppraisal(id: string) {
-    this.reviewAppraisal.emit(id);
-  }
   
   onSubmit(id: string) {
     this.submit.emit(id);

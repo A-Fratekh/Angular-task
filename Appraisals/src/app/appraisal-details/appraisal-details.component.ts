@@ -11,15 +11,19 @@ import { CommonModule } from '@angular/common';
 })
 export class AppraisalDetailsComponent  implements OnInit{
   appraisal :any;
+  appraisalId! : any;
 
   constructor(private activeRouter: ActivatedRoute, private dataService: DataService){
   }
 
 
   ngOnInit(): void {
-  const appraisalId  = this.activeRouter.snapshot.paramMap.get('id');
-  if(appraisalId){
-    this.dataService.getAppraisalById(appraisalId).subscribe((data:any)=>{
+
+   this.activeRouter.paramMap.subscribe((params)=>{
+    this.appraisalId = params.get('id');
+  })
+  if(this.appraisalId){
+    this.dataService.getAppraisalById(this.appraisalId).subscribe((data:any)=>{
       this.appraisal=data;
     });
   }

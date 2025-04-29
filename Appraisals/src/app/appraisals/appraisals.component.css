@@ -93,3 +93,13 @@ vertical-align: middle;
   outline: none;
   border: 1px solid var(--border);
 }
+
+.btn-outline-warning {
+  color: var(--btn-primary);
+  border-color: var(--btn-primary);
+}
+
+.btn-outline-warning:hover {
+  background-color: var(--btn-primary);
+  color: white;
+}

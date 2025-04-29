@@ -1,14 +1,13 @@
 <div class="container">
   <div class="row justify-content-end mt-0">
     <div class="col-md-12">
-      <ng-container *ngIf="mode!=='posting'">
+      @if(mode!=='posting'){
         <div class="search-container">
           <input type="text" [(ngModel)]="searchValue" (input)="onSearchChange()" class="form-control search-input"
             placeholder="Search">
           <i class="fas fa-search search-icon"></i>
         </div>
-      </ng-container>
-      <ng-container *ngIf="mode==='posting'">
+      }@else {
         <div class="d-flex">
           <div class="d-flex">
             <button type="button" class="btn btn-submit btn-post">
@@ -19,13 +18,12 @@
             </button>
           </div>
           <div class="search-container">
-            <input type="text" [(ngModel)]="searchValue" (input)="onSearchChange()" class="form-control search-input-posting"
-              placeholder="Filter">
+            <input type="text" [(ngModel)]="searchValue" (input)="onSearchChange()"
+              class="form-control search-input-posting" placeholder="Filter">
             <i class="fas fa-search search-icon"></i>
           </div>
-         
         </div>
-      </ng-container>
+      }
     </div>
   </div>
 </div>

@@ -11,7 +11,8 @@
   </div>
 
   <div class="list-group">
-    <div *ngFor="let item of filteredItems" class="list-group-item p-3 mb-2" [class.bg-light]="selectedItems.includes(item.id)">
+    @for (item of filteredItems; track item) {
+    <div  class="list-group-item p-3 mb-2" [class.bg-light]="selectedItems.includes(item.id)">
       <div class="row gy-3 gx-2 align-items-center">
 
         <div class="col-auto">
@@ -41,11 +42,11 @@
           <div class="d-flex flex-column align-items-md-start align-items-center">
             <div class="fw-semibold mb-1">{{ getRatingLabel(item.rating) }}: {{ item.rating }}/{{ item.maxRating }}</div>
             <div class="d-flex w-40 justify-content-center justify-content-md-start">
-              <ng-container *ngFor="let segment of [10, 10, 10, 10]; let i = index">
+                @for (segment of [10, 10, 10, 10]; track $index) {
                 <div class="flex-grow-1 me-1 progress-bar"
-                     [ngClass]="getSegmentColorClass(i, item.rating, item.maxRating)">
+                     [ngClass]="getSegmentColorClass($index, item.rating, item.maxRating)">
                 </div>
-              </ng-container>
+              }
             </div>
           </div>
         </div>
@@ -60,5 +61,6 @@
 
       </div>
     </div>
+  }
   </div>
 </div>

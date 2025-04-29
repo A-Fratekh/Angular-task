@@ -1,19 +1,17 @@
 <!-- navbar.component.html -->
 <div class="col-12 col-xl-5 mb-3">
-    <div class="d-flex justify-content-center justify-content-md-start">
-        <div class="nav-container ">
-            <ul class="nav nav-tabs bg-nav-bar w-100" id="myTab" role="tablist">
-  <li class="nav-item" *ngFor="let tab of tabs">
-    <a class="nav-link" 
-       [routerLink]="tab.route" 
-       routerLinkActive="active"
-       [routerLinkActiveOptions]="{ exact: true }"
-       role="tab">
-      <i class="{{ tab.icon }} me-1"></i> {{ tab.label }}
-    </a>
-  </li>
-</ul>
-
-        </div>
+  <div class="d-flex justify-content-center justify-content-md-start">
+    <div class="nav-container ">
+      <ul class="nav nav-tabs bg-nav-bar w-100" id="myTab" role="tablist">
+        @for(tab of tabs; track tab){
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="tab.route" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }" role="tab">
+            <i class="{{ tab.icon }} me-1"></i> {{ tab.label }}
+          </a>
+        </li>
+        }
+      </ul>
     </div>
   </div>
+</div>
